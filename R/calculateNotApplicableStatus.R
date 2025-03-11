@@ -160,7 +160,7 @@
   for (i in seq_len(nrow(checkResults))) {
     # Special rule for measureConditionEraCompleteness, which should be notApplicable if CONDITION_OCCURRENCE is empty
     if (checkResults[i, "checkName"] == "measureConditionEraCompleteness") {
-      if (any(conditionOccurrenceIsMissing || conditionOccurrenceIsEmpty)) {
+      if (conditionOccurrenceIsMissing || conditionOccurrenceIsEmpty) {
         checkResults$notApplicable[i] <- 1
         checkResults$notApplicableReason[i] <- "Table CONDITION_OCCURRENCE is empty."
       } else {
